@@ -1,0 +1,23 @@
+service: haridasi-rasopasna
+
+package:
+  include:
+    - ./utils/**
+    - ./schema/**
+
+custom: ${file(serverless_config/custom.yml)}
+provider: ${file(serverless_config/provider.yml)}
+functions: ${file(serverless_config/functions.yml)}
+appSync: ${file(serverless_config/appsync.yml)}
+
+plugins:
+  - serverless-appsync-plugin
+  - serverless-offline
+  - serverless-iam-roles-per-function
+
+resources:
+  Resources:
+    GraphQLApiGateway:
+      Type: AWS::ApiGateway::RestApi
+      Properties:
+        Name: GraphQLApi
