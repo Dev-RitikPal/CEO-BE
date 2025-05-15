@@ -1,0 +1,3 @@
+createUser:
+  handler: queries/createUser.handler
+  description: creates new user

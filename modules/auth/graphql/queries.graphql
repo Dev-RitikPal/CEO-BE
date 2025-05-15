@@ -1,0 +1,7 @@
+type Query {
+  createUser: userResponse
+}
+
+# type Mutation {
+#   test(input: test): test
+# }
