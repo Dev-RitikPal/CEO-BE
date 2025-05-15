@@ -1,0 +1,77 @@
+name: aws
+runtime: nodejs20.x
+stage: wip
+region: ${opt:region, 'ap-south-1'}
+# vpc:
+  # securityGroupIds:
+  #   - ${ssm:/cms3/${self:provider.stage}/security-group}
+  # subnetIds:
+  #   - ${ssm:/cms3/${self:provider.stage}/subnet-primary}
+  #   - ${ssm:/cms3/${self:provider.stage}/subnet-secondary}
+versionFunctions: false
+memorySize: 256
+deploymentBucket:
+  name: serverless-deployment-${self:provider.stage}-${aws:accountId}-${self:provider.region}
+  serverSideEncryption: AES256
+iam:
+  role:
+    statements:
+      - Effect: "Allow"
+        Action:
+          - s3:GetObject
+          - s3:PutObject
+          - s3:DeleteObject
+          - s3:ListBucket
+        Resource: 
+          - arn:aws:s3:::serverless-deployment-${self:provider.stage}-${aws:accountId}-${self:provider.region}/*
+          - arn:aws:s3:::serverless-deployment-${self:provider.stage}-${aws:accountId}-${self:provider.region}
+      - Effect: "Allow"
+        Action:
+          - states:StartExecution
+          - states:StopExecution
+          - states:DescribeExecution
+          - states:CreateStateMachine
+        Resource: "arn:aws:states:${self:provider.region}:${aws:accountId}:stateMachine:*"
+      - Effect: "Allow"
+        Action:
+          - logs:CreateLogStream
+          - logs:PutLogEvents
+        Resource: "arn:aws:logs:${self:provider.region}:${aws:accountId}:log-group:/aws/lambda/*"
+      - Effect: "Allow"
+        Action:
+          - ssm:GetParameter
+          - ssm:GetParameters
+          - ssm:GetParametersByPath
+        Resource: "arn:aws:ssm:${self:provider.region}:${aws:accountId}:parameter/cms3/*"
+      - Effect: "Allow"
+        Action:
+          - "lambda:InvokeFunction"
+        Resource: "arn:aws:lambda:${self:provider.region}:${aws:accountId}:function:*"
+      - Effect: Allow
+        Action:
+          - execute-api:Invoke
+          - execute-api:ManageConnections
+        Resource: "arn:aws:execute-api:*:*:*"
+
+environment:
+  #   AWS_REGION_NAME: ${self:provider.region}
+  MONGODB_URI_SSM: mongodb+srv://devritikpal:CeoMongoDB@ceo.di7jcrr.mongodb.net/
+  MONGODB_DB_NAME_SSM: ceo
+#   SEND_FROM_EMAIL: /cms3/${self:provider.stage}/email/fromEmail
+#   SEND_FROM_NAME: /cms3/${self:provider.stage}/email/fromName
+#   SEND_FROM_USERNAME: /cms3/${self:provider.stage}/email/fromUsername
+#   SEND_FROM_PASSWORD: /cms3/${self:provider.stage}/email/fromPassword
+  # MONGODB_MAX_POOL_SIZE_SSM: /cms3/${self:provider.stage}/mongo/maxPoolSize
+#   stage: ${self:provider.stage}
+#   KINESIS_PRODUCER_ARN: "arn:aws:states:${self:provider.region}:${aws:accountId}:stateMachine:producerStateMachine"
+#   CLAIM_EVIDENCE_BUCKET_NAME: "cms3-claims-evidences"
+#   VOYAGE_APPLICATION_BUCKET_NAME: voyage-application-${self:provider.stage}
+#   CREATE_CLAIM_SETTLEMENT_FUNCTION_NAME: claims-settlement-pdf-${self:provider.stage}-createClaimSettlementPdf
+#   CREATE_CLAIM_ACKNOWLEDGEMENT_FUNCTION_NAME: claims-settlement-pdf-${self:provider.stage}-createClaimAcknoweledgementPdf
+
+#   DOCS_BUCKET: driver-tablet-${self:provider.stage}
+#   TENANT_ID: ${ssm:/allmysons/cms3/${self:provider.stage}/azure-ad-tenantid}
+#   CLIENT_ID: ${ssm:/allmysons/cms3/${self:provider.stage}/azure-ad-clientid}
+#   ISSUER_URL: https://login.microsoftonline.com/${self:provider.environment.TENANT_ID}/v2.0
+# layers:
+#   - { "Fn::ImportValue": "CMS3BELibsLayerARN-${self:provider.stage}" }

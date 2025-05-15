@@ -1,0 +1,420 @@
+type userResponse {
+  message: String
+}
+
+# type Customer {
+#   _id: ID
+#   first_name: String
+#   last_name: String
+#   org_id: CustomerOrg
+#   time_zone: String
+#   contacts: [CustomerContact]
+#   opt_ins: CustomerOptIns
+#   audit_fields: CustomerAuditFields
+#   external_id: [Int]
+# }
+
+# type CustomerOrg {
+#   _id: ID
+#   name: String
+# }
+
+# type CustomerContact {
+#   type: String
+#   value: String
+#   primary: Boolean
+# }
+
+# type CustomerOptIns {
+#   sms: Boolean
+#   calls: Boolean
+#   email: Boolean
+# }
+
+# type CustomerAuditFields {
+#   created_at: String
+#   updated_at: String
+# }
+
+# type Items {
+#   item_id: ID
+#   item: String
+#   category: String
+#   weight: String
+# }
+
+# type SubCategory {
+#   id: ID
+#   name: String
+#   sub_category_id: String
+# }
+
+# type Categories {
+#   id: ID
+#   name: String
+#   sub_category_id: String
+# }
+
+# type SubCategoryDamage {
+#   item_id: String
+#   name: String
+#   item: String
+#   category: String
+#   weight: String
+# }
+
+# type CategoryList {
+#   item_id: String
+#   name: String
+#   sub_categories: [SubCategoryDamage]
+# }
+
+# type ClaimImagesResponse {
+#   image_urls: [ImageUrl]
+#   success: Boolean
+# }
+
+# type ImageUrl {
+#   s3Key: String
+#   get_url: String
+# }
+
+# type SaveClaimImagesOutput {
+#   success: Boolean
+#   message: String
+# }
+
+# type GetClaimJourneyResponse {
+#   journeyDetails: AWSJSON
+# }
+
+# input MultipleImageUploadInput {
+#   claim_id: String
+#   item_id: String
+#   images: [ImageInput]
+# }
+
+# input ImageInput {
+#   imageName: String
+#   imageType: String
+#   fileContent: String
+# }
+
+# input ClaimInput {
+#   _id: ID
+#   job_id: String
+#   is_active: Boolean
+#   message: String
+#   items: [ClaimItemInput]
+#   claim_status_internal: String
+#   category: [String]
+#   notes: [claimNotes]
+#   sub_category: String
+#   audit_fields: AuditFieldsInput
+#   payout: String
+# }
+
+# input claimNotes {
+#   description: String
+#   category: String
+#   updated_at: String
+# }
+
+# input ClaimItemInput {
+#   claim_id: String
+#   item_id: String
+#   _id: String
+#   name: String
+#   category: String
+#   sub_category: String
+#   deny: Boolean
+#   evidence: [EvidenceFieldInput]
+#   quantity: Int = 1
+#   damage_assessment: String
+#   denial_reasoning: String
+#   carrier_election: String
+#   status: String
+#   notes: String
+#   reason: String
+#   item_offer: Int
+#   weight: String
+#   liability: Int
+#   reviewed_by: String
+#   reviewed_at: String
+# }
+
+# input AuditFieldsInput {
+#   updated_by: String
+#   created_by: String
+#   created_at: String
+#   updated_at: String
+# }
+
+# input EvidenceFieldInput {
+#   id: String
+#   type: String
+#   path: String
+# }
+
+# type ClaimRes {
+#   _id: ID
+#   job_id: String
+#   is_active: Boolean
+#   message: String
+#   items: [ClaimItemRes]
+#   notes: [claimNotesRes]
+#   category: [String]
+#   sub_category: String
+#   claim_status_internal: String
+#   audit_fields: AuditFieldsType
+#   payout: String
+# }
+
+# type claimNotesRes {
+#   description: String
+#   category: String
+#   updated_at: String
+# }
+
+# type ClaimItemRes {
+#   name: String
+#   category: String
+#   sub_category: String
+#   _id: ID
+#   evidence: [EvidenceField]
+#   quantity: Int!
+#   claim_id: String
+#   item_id: String
+#   damage_assessment: String
+#   status: String
+#   notes: String
+#   deny: Boolean
+#   reason: String
+#   item_offer: Int
+#   weight: String
+#   liability: Int
+#   denial_reasoning: String
+#   carrier_election: String
+#   reviewed_by: String
+#   reviewed_at: String
+# }
+
+# type AuditFieldsType {
+#   updated_by: String
+#   created_by: String
+#   created_at: String
+#   updated_at: String
+# }
+
+# type EvidenceField {
+#   id: String
+#   type: String
+#   path: String
+#   date_created: String
+# }
+
+# input SignatureInput {
+#   claim_id: ID!
+#   signature_image: String
+#   signature_type: String
+#   customer_name: String
+#   date: String
+#   phone: String
+#   address: String
+# }
+
+# type Signature {
+#   _id: ID
+#   signature_image: String
+#   signature_type: String
+#   customer_name: String
+#   date: String
+#   phone: String
+#   address: String
+# }
+
+# type ClaimsData {
+#   claim_id: ID
+#   signature: Signature
+# }
+
+# type UpdateSignatureDateTimeResponse {
+#   success: Boolean
+#   message: String
+#   claims_data: ClaimsData
+# }
+
+# input SettlementInput {
+#   claim_id: ID
+#   seeking_amount: Float
+# }
+
+# type ClaimSettlementResponse {
+#   success: Boolean
+#   display_message: DisplayMessage
+#   settlement_data: SettlementData
+# }
+
+# type SettlementData {
+#   closest_match: calculatedSettlementResult
+#   settlement_range: [calculatedSettlementResult]
+#   category: String
+# }
+
+# type calculatedSettlementResult {
+#   offered_amount: Float
+#   seeking_range: Float
+#   move_cost_range: Float
+#   legal_claim_limit: Float
+# }
+
+# type DisplayMessage {
+#   options: [String]
+#   message: String
+# }
+
+# type SettlementDetails {
+#   calculated_amount: Float
+#   settlement_amount: Float
+#   expected_amount: Float
+#   additional_review: Boolean
+#   claim_status_internal: String
+# }
+
+# type NotesResponse {
+#   history_data: [notesListRes]
+#   filtered_history: [notesFilterRes]
+#   new_comment: comment_details
+#   customer_comment: Boolean
+# }
+
+# type notesListRes {
+#   name: String
+#   type: String
+#   status: String
+#   date: String
+#   time: String
+# }
+
+# type notesFilterRes {
+#   name: String
+#   type: String
+#   status: String
+#   date: String
+#   time: String
+# }
+
+# type comment_details {
+#   description: String
+# }
+
+# type UpdatedAmount {
+#   _id: ID
+#   settlement_amount: Float
+# }
+
+# type updatedSettlementAmountResponse {
+#   success: Boolean
+#   message: String
+#   updated_settlement_amount: UpdatedAmount
+# }
+
+# type ClaimResponse {
+#   success: Boolean
+#   message: String
+# }
+
+# input UpdateSettlementAmount {
+#   claim_id: ID
+#   new_settle_amount: Float
+#   employee_password: String
+# }
+
+# input UpdateClaimNotes {
+#   job_id: ID
+#   add_notes: AddNotes
+#   dropdown_choice: String
+#   employee_id: ID
+#   claim_id: ID
+# }
+
+# input AddNotes {
+#   description: String
+#   method: String
+#   category: String
+# }
+
+# type documentsList {
+#   file_type: String
+#   type: String
+#   file_name: String
+#   _id: String
+#   signature_date: String
+# }
+
+# type docs_list {
+#   view_docs: [documentsList]
+#   send_docs: [documentsList]
+# }
+
+# type DocumentsResponse {
+#   get_url: String
+#   message: String
+#   job_id: String
+#   documents_list: docs_list
+# }
+
+# input DocumentsListInput {
+#   job_id: String
+#   document_id: String
+# }
+
+# type UpdatedSettlementStatus {
+#   success: Boolean
+#   message: String
+#   settlement_values: UpdatedValues
+# }
+
+# type UpdatedValues {
+#   seeking_amount: Float
+#   offered_amount: Float
+#   settlement_amount: Float
+#   additional_review: Boolean
+#   legal_claim_limit: Float
+#   claim_status_internal: String
+# }
+
+# type StatsCategory {
+#   ALL_TIME: StatsTimeRange
+#   YTD: StatsTimeRange
+#   MTD: StatsTimeRange
+# }
+
+# type StatsTimeRange {
+#   total_resolved: Int
+#   total_calls: Int
+#   sm_percent: Float
+#   days_to_settle: Float
+#   trophies: Int
+# }
+
+# type StatsData {
+#   my_stats: StatsCategory
+#   automated_claims: StatsCategory
+#   team_stats: StatsCategory
+# }
+
+# enum ClaimReportType {
+#   NEWLY
+#   INPROGRESS
+# }
+# type viewAgreementHtmlResponse {
+#   success: Boolean
+#   message: String
+#   pdf_url: String
+#   htmlContent: String
+# }
+
+# type SuccessResponse{
+#   message: String
+# }
