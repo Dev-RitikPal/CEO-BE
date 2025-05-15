@@ -1,0 +1,31 @@
+name: auth--be-api-${self:provider.stage}
+schema:
+  - ./graphql/schema.graphql
+  - ./graphql/queries.graphql
+
+authentication:
+  type: API_KEY
+  # additionalAuthenticationProviders:
+  #   - authenticationType: OPENID_CONNECT
+  #     openIDConnectConfig:
+  #       issuer: ${self:provider.environment.ISSUER_URL}
+  #       clientId: ${self:provider.environment.CLIENT_ID}
+apiKeys:
+  - name: "${self:service}-api"
+    description: "${self:provider.stage} API key."
+logging:
+  level: ALL
+  retentionInDays: 14
+dataSources:
+  createUser:
+    type: "AWS_LAMBDA"
+    config:
+      functionArn: ${self:custom.createUserLambdaArn}
+     
+resolvers:
+  Query.createUser:
+    kind: UNIT
+    dataSource: createUser
+  # Mutation.saveClaimImage:
+  #   kind: UNIT
+  #   dataSource: saveClaimImage

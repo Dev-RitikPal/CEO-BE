@@ -1,0 +1,25 @@
+createUserLambdaArn: arn:aws:lambda:${self:provider.region}:${aws:accountId}:function:${self:service}-${self:provider.stage}-createUser
+# For Lamda versioning purposes
+# prune:
+#   automatic: true  # Automatically prune old versions after deployment
+#   number: 2        # Keep the most recent 2 versions
+
+# warmup:
+#   default:
+#     enabled: false
+#     role: IamRoleLambdaExecution
+#     prewarm: true
+#     events:
+#       - schedule: "cron(0/5 12-22 ? * MON-FRI *)" # Run WarmUp every 5 minutes Mon-Fri between 07:00am and 5:55pm CST Time
+#     package:
+#       individually: true
+#       patterns:
+#         - .warmup/**
+
+# isWarmer:
+#   wip: true
+#   fallback: false
+
+# warmerConcurrency:
+#   wip: 5
+#   fallbackConcurrency: 0
