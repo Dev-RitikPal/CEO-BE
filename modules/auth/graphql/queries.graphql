@@ -3,15 +3,5 @@ type Query {
 }
 
 # type Mutation {
-#   updateClaimItem(input: ClaimItemInput): ClaimItemRes
-#   saveClaimImage(input: MultipleImageUploadInput!): SaveClaimImagesOutput
-#   cancelClaimUpdate(claim_id: ID!): ClaimResponse
-#   createUpdateClaim(input: ClaimInput): ClaimRes
-#   updateSettlementAmount(
-#     input: UpdateSettlementAmount
-#   ): updatedSettlementAmountResponse
-#   updateSignatureDateTime(
-#     input: SignatureInput!
-#   ): UpdateSignatureDateTimeResponse
-#   updateSettlementStatus(claim_id: ID, choice: String): UpdatedSettlementStatus
+#   test(input: test): test
 # }
