@@ -1,4 +1,6 @@
-createUserLambdaArn: arn:aws:lambda:${self:provider.region}:${aws:accountId}:function:${self:service}-${self:provider.stage}-createUser
+signupLambdaArn: arn:aws:lambda:${self:provider.region}:${aws:accountId}:function:${self:service}-${self:provider.stage}-signup
+loginLambdaArn: arn:aws:lambda:${self:provider.region}:${aws:accountId}:function:${self:service}-${self:provider.stage}-login
+getUserLambdaArn: arn:aws:lambda:${self:provider.region}:${aws:accountId}:function:${self:service}-${self:provider.stage}-getUser
 # For Lamda versioning purposes
 # prune:
 #   automatic: true  # Automatically prune old versions after deployment

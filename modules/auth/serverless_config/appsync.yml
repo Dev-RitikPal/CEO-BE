@@ -17,15 +17,26 @@ logging:
   level: ALL
   retentionInDays: 14
 dataSources:
-  createUser:
+  signup:
     type: "AWS_LAMBDA"
     config:
-      functionArn: ${self:custom.createUserLambdaArn}
+      functionArn: ${self:custom.signupLambdaArn}
+  login:
+    type: "AWS_LAMBDA"
+    config:
+      functionArn: ${self:custom.loginLambdaArn}
+  getUser:
+    type: "AWS_LAMBDA"
+    config:
+      functionArn: ${self:custom.getUserLambdaArn}
      
 resolvers:
-  Query.createUser:
+  Mutation.login:
     kind: UNIT
-    dataSource: createUser
-  # Mutation.saveClaimImage:
-  #   kind: UNIT
-  #   dataSource: saveClaimImage
+    dataSource: login
+  Mutation.signup:
+    kind: UNIT
+    dataSource: signup
+  Query.getUser:
+    kind: UNIT
+    dataSource: getUser

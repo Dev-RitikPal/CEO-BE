@@ -1,7 +1,12 @@
-type Query {
-  createUser: userResponse
+schema {
+  mutation: Mutation
+  query: Query 
+}
+type Mutation {
+  login(email: String!, password: String!): UserResponse
+  signup(input: CreateUserInput): CreateUserInputResponse
 }
 
-# type Mutation {
-#   test(input: test): test
-# }
+type Query {
+  getUser(_id: String!): User
+}

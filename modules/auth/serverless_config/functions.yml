@@ -1,3 +1,12 @@
-createUser:
-  handler: queries/createUser.handler
+signup:
+  handler: mutations/signup.handler
   description: creates new user
+
+login:
+  handler: mutations/login.handler
+  description: login user
+  
+getUser:
+  handler: queries/getUser.handler
+  description: getUser
+  
