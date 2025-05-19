@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+let mongoose = require('mongoose');
 
 const MAX_POOL_SIZE = 25;
 
@@ -15,7 +15,7 @@ const maxPoolSize = MAX_POOL_SIZE;
  * @returns {Promise<mongoose.Connection>} Mongoose connection object.
  * @throws {Error} If environment variables MONGODB_URI_SSM or MONGODB_DB_NAME_SSM are missing.
  */
-async function connectToDatabase(mongooseInstance = null) {
+module.exports.connectToDatabase = async (mongooseInstance = null) => {
   if (mongooseInstance) {
     mongoose = mongooseInstance;
   }
@@ -60,6 +60,4 @@ async function connectToDatabase(mongooseInstance = null) {
     cachedDb = null; // Clear the cache on error
     throw new Error(`Failed to connect to MongoDB: ${error.message}`);
   }
-}
-
-module.exports = { connectToDatabase }; 
+};

@@ -56,3 +56,5 @@ iam:
 environment:
   MONGODB_URI_SSM: mongodb+srv://devritikpal:CeoMongoDB@ceo.di7jcrr.mongodb.net/
   MONGODB_DB_NAME_SSM: ceo
+  JWT_SECRET: 607aa30b87eee8aa2414263e36a7387c70dd06de5e7b0926594f6b60c71f79f7
+  REFRESH_TOKEN_SECRET: ef241ee605c6fbbe291e74163f4111a658477a60d61e4c6d07bbb50727ac42d0
