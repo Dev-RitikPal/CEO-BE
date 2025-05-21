@@ -17,6 +17,13 @@ input RegisterInput {
   password: String
 }
 
+type BasicDetails {
+  companyName: String
+  legalEntityType: String
+  businessDescription: String
+  industrySector: String
+}
+
 input BasicDetailsInput {
   companyName: String
   legalEntityType: String
@@ -24,11 +31,26 @@ input BasicDetailsInput {
   industrySector: String
 }
 
+type ContactDetails {
+  contactPerson: String
+  contactEmail: String
+  contactPhone: String
+  website: String
+}
+
 input ContactDetailsInput {
   contactPerson: String
   contactEmail: String
   contactPhone: String
   website: String
+}
+
+type BusinessAddress {
+  registeredOfficeAddress: String
+  mailingAddress: String
+  stateProvince: String
+  city: String
+  postalCode: String
 }
 
 input BusinessAddressInput {
@@ -41,10 +63,9 @@ input BusinessAddressInput {
 
 type UserDataRegister {
   _id: ID
-  basicDetails: BasicDetailsInput
-  businessAddress: BusinessAddressInput
-  contactDetails: ContactDetailsInput
-  password: String
+  basicDetails: BasicDetails
+  businessAddress: BusinessAddress
+  contactDetails: ContactDetails
 }
 
 type RegisterInputResponse {
