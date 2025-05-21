@@ -1,0 +1,26 @@
+{
+  "arguments": {
+    "input": {
+      "basicDetails": {
+        "companyName": "test name",
+        "legalEntityType": "Pvt. Ltd.",
+        "businessDescription": "test description",
+        "industrySector": "IT"
+      },
+      "businessAddress": {
+        "registeredOfficeAddress": "test registered office address",
+        "mailingAddress": "test mailing address",
+        "stateProvince": "test state province",
+        "city": "test city",
+        "postalCode": "test postal code"
+      },
+      "contactDetails": {
+        "contactPerson": "jon doe",
+        "contactEmail": "jon@gmail.com",
+        "contactPhone": "9876543210",
+        "website": "www.jon.com"
+      },
+      "password": "test password"
+    }
+  }
+}

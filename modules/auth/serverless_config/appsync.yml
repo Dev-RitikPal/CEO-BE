@@ -17,14 +17,18 @@ logging:
   level: ALL
   retentionInDays: 14
 dataSources:
-  signup:
+  register:
     type: "AWS_LAMBDA"
     config:
-      functionArn: ${self:custom.signupLambdaArn}
+      functionArn: ${self:custom.registerLambdaArn}
   login:
     type: "AWS_LAMBDA"
     config:
       functionArn: ${self:custom.loginLambdaArn}
+  logout:
+    type: "AWS_LAMBDA"
+    config:
+      functionArn: ${self:custom.logoutLambdaArn}
   getUser:
     type: "AWS_LAMBDA"
     config:
@@ -34,9 +38,12 @@ resolvers:
   Mutation.login:
     kind: UNIT
     dataSource: login
-  Mutation.signup:
+  Mutation.logout:
     kind: UNIT
-    dataSource: signup
+    dataSource: logout
+  Mutation.register:
+    kind: UNIT
+    dataSource: register
   Query.getUser:
     kind: UNIT
     dataSource: getUser

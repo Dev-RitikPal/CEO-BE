@@ -1,5 +1,5 @@
 const { connectToDatabase } = require("../utils/mongooseConnection");
-const { User } = require("../models/User");
+const { Register } = require("../models/register");
 
 /**
  * Authenticates a user and returns tokens
@@ -15,31 +15,30 @@ module.exports.handler = async (event, context,callback) => {
     const { email, password } = event.arguments;
 
     // Find user by email
-    const user = await User.findOne({ email });
-    if (!user) {
+    const org = await Register.findOne({
+      "businessAddress.mailingAddress": email,
+    });
+
+    if (!org) {
       throw new Error("Invalid email or password");
     }
 
     // Validate password using bcrypt
-    // const isValidPassword = await user.validatePassword(password);
-    // if (!isValidPassword) {
-    //   throw new Error("Invalid email or password");
-    // }
-
-    if(user.password !== password){
+    const isValidPassword = await org.validatePassword(password);
+    if (!isValidPassword) {
       throw new Error("Invalid email or password");
     }
 
     // Generate tokens
-    const token = user.generateAuthToken();
-    const refreshToken = user.generateRefreshToken();
-    await user.save(); // Save to store refresh token
+    const token = org.generateAuthToken();
+    const refreshToken = org.generateRefreshToken();
+    await org.save(); // Save to store refresh token
     
     callback(null, {
       message: "Login successful",
       user: {
-        _id: user._id,
-        email: user.email,
+        _id: org._id,
+        email: org.businessAddress.mailingAddress,
         token,
         refreshToken
       }

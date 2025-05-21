@@ -1,4 +1,3 @@
-
 type user {
   _id: ID
   email: String
@@ -11,32 +10,46 @@ type UserResponse {
   user: user
 }
 
-input CreateUserInput {
-  firstName: String
-  lastName: String
-  email: String
+input RegisterInput {
+  basicDetails: BasicDetailsInput
+  businessAddress: BusinessAddressInput
+  contactDetails: ContactDetailsInput
   password: String
-  role: String
-  city: String
-  phone: String
-  location: String
 }
 
-type UserDataSignup {
+input BasicDetailsInput {
+  companyName: String
+  legalEntityType: String
+  businessDescription: String
+  industrySector: String
+}
+
+input ContactDetailsInput {
+  contactPerson: String
+  contactEmail: String
+  contactPhone: String
+  website: String
+}
+
+input BusinessAddressInput {
+  registeredOfficeAddress: String
+  mailingAddress: String
+  stateProvince: String
+  city: String
+  postalCode: String
+}
+
+type UserDataRegister {
   _id: ID
-  firstName: String
-  lastName: String
-  email: String
-  role: String
-  city: String
-  phone: String
-  location: String
- 
+  basicDetails: BasicDetailsInput
+  businessAddress: BusinessAddressInput
+  contactDetails: ContactDetailsInput
+  password: String
 }
 
-type CreateUserInputResponse {
+type RegisterInputResponse {
   message: String
-  user: UserDataSignup
+  orgDetails: UserDataRegister
   token: String
   refreshToken: String
 }
@@ -55,4 +68,8 @@ type userData  {
 type User  {
   message:String
   user : userData
+}
+
+type LogoutResponse {
+  message: String!
 }

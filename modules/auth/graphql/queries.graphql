@@ -4,7 +4,8 @@ schema {
 }
 type Mutation {
   login(email: String!, password: String!): UserResponse
-  signup(input: CreateUserInput): CreateUserInputResponse
+  register(input: RegisterInput): RegisterInputResponse
+  logout: LogoutResponse
 }
 
 type Query {

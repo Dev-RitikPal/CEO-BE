@@ -1,8 +1,6 @@
 {
   "arguments": {
-    
-      "email": "ritik@gmail.com",
-      "password": "ritik@123"
-    
+      "email": "test@gmail.com",
+      "password": "test password"
   }
 }
