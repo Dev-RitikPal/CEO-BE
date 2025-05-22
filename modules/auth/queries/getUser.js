@@ -1,5 +1,5 @@
 const { connectToDatabase } = require("../utils/mongooseConnection.js")
-const { User } = require("../models/User.js");
+const { User } = require("../models/register.js");
 // import jwt from 'jsonwebtoken';
 
 /**
