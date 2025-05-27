@@ -1,0 +1,11 @@
+role:
+  statements:
+    - Effect: "Allow"
+      Action:
+        - states:*
+        - logs:*
+        - ssm:*
+        - execute-api:Invoke
+        - execute-api:ManageConnections
+        - s3:*
+      Resource: "*"

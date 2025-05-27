@@ -10,3 +10,6 @@ getUser:
 logout:
   handler: mutations/logout.handler
   description: logout user
+signup:
+  handler: mutations/signup.handler
+  description: creates new user

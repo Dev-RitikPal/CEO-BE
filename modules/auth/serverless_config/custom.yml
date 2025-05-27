@@ -2,6 +2,7 @@ registerLambdaArn: arn:aws:lambda:${self:provider.region}:${aws:accountId}:funct
 loginLambdaArn: arn:aws:lambda:${self:provider.region}:${aws:accountId}:function:${self:service}-${self:provider.stage}-login
 getUserLambdaArn: arn:aws:lambda:${self:provider.region}:${aws:accountId}:function:${self:service}-${self:provider.stage}-getUser
 logoutLambdaArn: arn:aws:lambda:${self:provider.region}:${aws:accountId}:function:${self:service}-${self:provider.stage}-logout
+signupLambdaArn: arn:aws:lambda:${self:provider.region}:${aws:accountId}:function:${self:service}-${self:provider.stage}-signup
 # For Lamda versioning purposes
 # prune:
 #   automatic: true  # Automatically prune old versions after deployment

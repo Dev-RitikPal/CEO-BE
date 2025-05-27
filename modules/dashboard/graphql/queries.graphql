@@ -1,0 +1,12 @@
+schema {
+  mutation: Mutation
+  query: Query 
+}
+type Mutation {
+  addProject(input: ProjectInput!): AddProjectResponse
+}
+
+type Query {
+  dashboard: Dashboard
+}
+
