@@ -1,0 +1,26 @@
+{
+   "arguments": {"input": {
+      "project_name": "Example Project",
+      "client": {
+        "name": "Example Client",
+        "phone": "1234567890",
+        "email": "client@example.com",
+        "contact_person": "John Doe"
+      },
+      "assigned_to": "Developer Name",
+      "technology": "Node.js",
+      "type": "outSource",
+      "businessDeveloper": "Business Dev Name",
+      "phone": "9876543210",
+      "status": "active",
+      "onboarding_date": "2024-03-20",
+      "equipments_by": "Equipment Provider",
+      "project_manager": "Project Manager Name",
+      "project_description": "Project description here",
+      "reporting_to": "Reporting Manager",
+      "shadow_developer": "Shadow Dev Name",
+      "end_date": "2024-12-31",
+      "location": "Remote",
+      "remarks": "Additional notes"
+    }}
+  }

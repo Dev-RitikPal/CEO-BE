@@ -1,0 +1,20 @@
+# "org" ensures this Service is used with the correct Serverless Framework Access Key.
+service: dashboard
+
+package:
+  include:
+    - ../utils/**
+    - ../schema/**
+
+custom: ${file(serverless_config/custom.yml)}
+provider: ${file(serverless_config/provider.yml)}
+functions: ${file(serverless_config/functions.yml)}
+appSync: ${file(serverless_config/appsync.yml)}
+
+plugins:
+  - serverless-appsync-plugin
+  - serverless-offline
+  # - serverless-step-functions
+  - serverless-iam-roles-per-function
+  - serverless-prune-plugin
+  # - serverless-plugin-warmup

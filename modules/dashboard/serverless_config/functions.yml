@@ -1,0 +1,6 @@
+addProject:
+  handler: mutations/addProject.handler
+  description: add new project
+dashboard:
+  handler: queries/dashboard.handler
+  description: get dashboard metrics and data

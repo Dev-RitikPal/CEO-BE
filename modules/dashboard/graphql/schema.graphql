@@ -1,0 +1,63 @@
+type Client {
+  name: String!
+  phone: String!
+  email: String!
+  contact_person: String!
+}
+
+input ClientInput {
+  name: String!
+  phone: String!
+  email: String!
+  contact_person: String!
+}
+
+type Project {
+  _id: ID
+  project_name: String!
+  client: Client!
+  assigned_to: String!
+  technology: String!
+  type: String!
+  businessDeveloper: String!
+  phone: String!
+  status: String!
+  onboarding_date: String!
+  equipments_by: String!
+  project_manager: String!
+  project_description: String!
+  reporting_to: String!
+  shadow_developer: String!
+  end_date: String
+  location: String
+  remarks: String
+}
+
+input ProjectInput {
+  project_name: String!
+  client: ClientInput!
+  assigned_to: String!
+  technology: String!
+  type: String!
+  businessDeveloper: String!
+  phone: String!
+  status: String!
+  onboarding_date: String!
+  equipments_by: String!
+  project_manager: String!
+  project_description: String!
+  reporting_to: String!
+  shadow_developer: String!
+  end_date: String
+  location: String
+  remarks: String
+}
+
+type AddProjectResponse {
+  message: String!
+  project: Project
+}
+
+type Dashboard {
+  message: String!
+}

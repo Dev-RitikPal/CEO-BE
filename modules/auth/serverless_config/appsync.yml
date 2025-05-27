@@ -33,6 +33,10 @@ dataSources:
     type: "AWS_LAMBDA"
     config:
       functionArn: ${self:custom.getUserLambdaArn}
+  signup:
+    type: "AWS_LAMBDA"
+    config:
+      functionArn: ${self:custom.signupLambdaArn}
      
 resolvers:
   Mutation.login:
@@ -44,6 +48,9 @@ resolvers:
   Mutation.register:
     kind: UNIT
     dataSource: register
+  Mutation.signup:
+    kind: UNIT
+    dataSource: signup
   Query.getUser:
     kind: UNIT
     dataSource: getUser
