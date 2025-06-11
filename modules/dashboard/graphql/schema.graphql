@@ -61,3 +61,23 @@ type AddProjectResponse {
 type Dashboard {
   message: String!
 }
+
+type AddWorkspaceResponse {
+  message: String!
+  workspace: Workspace
+}
+
+input WorkspaceInput {
+  workspaceName: String!
+  description: String!
+  createdBy: String!
+  visibility: String!
+  members: [String!]!
+  workspaceType: String!
+  tags: [String!]!
+  tools: [String!]!
+  features: [String!]!
+  type: String!
+  metadata: [JSON]!
+  defaultPermissions: [String]!
+}

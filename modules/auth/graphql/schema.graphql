@@ -108,4 +108,6 @@ input CreateUserInput {
 type CreateUserInputResponse {
   message: String!
   user: userData
+  refreshToken: String
+  token: String
 }

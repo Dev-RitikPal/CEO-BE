@@ -4,3 +4,6 @@ addProject:
 dashboard:
   handler: queries/dashboard.handler
   description: get dashboard metrics and data
+addWorkspace:
+  handler: mutations/addWorkspace.handler
+  description: add new workspace

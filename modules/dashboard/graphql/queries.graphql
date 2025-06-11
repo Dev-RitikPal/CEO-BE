@@ -4,6 +4,7 @@ schema {
 }
 type Mutation {
   addProject(input: ProjectInput!): AddProjectResponse
+  addWorkspace(input: WorkspaceInput!): AddWorkspaceResponse
 }
 
 type Query {

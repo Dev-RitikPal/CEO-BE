@@ -119,6 +119,6 @@ registerSchema.methods.validatePassword = async function(password) {
 };
 
 // Create and export the model
-const Register = mongoose.models.Register || mongoose.model('Register', registerSchema);
+const Organization = mongoose.models.organization || mongoose.model('organization', registerSchema);
 
-module.exports = { Register };
+module.exports = { Organization };
