@@ -1,5 +1,5 @@
 const { connectToDatabase } = require("../utils/mongooseConnection");
-const { User } = require("../models/User");
+const { User } = require("../models/user");
 
 /**
  * Lambda function handler to create user.

@@ -25,6 +25,10 @@ dataSources:
     type: "AWS_LAMBDA"
     config:
       functionArn: ${self:custom.dashboardLambdaArn}
+  addWorkspace:
+    type: "AWS_LAMBDA"
+    config:
+      functionArn: ${self:custom.addWorkspaceLambdaArn}
      
 resolvers:
   Mutation.addProject:
@@ -33,3 +37,6 @@ resolvers:
   Query.dashboard:
     kind: UNIT
     dataSource: dashboard
+  Mutation.addWorkspace:
+    kind: UNIT
+    dataSource: addWorkspace

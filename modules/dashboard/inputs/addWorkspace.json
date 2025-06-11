@@ -1,0 +1,25 @@
+{
+  "arguments": {
+    "input": {
+        "workspaceName": "Example Workspace",
+        "description": "Example Description",
+        "organizationId": "682de19cfa7a59e50b40621f",
+        "createdBy": "682b322c3bb0f69fd2af0a73",
+        "visibility": "public",
+        "members": ["682b3060798c091d4f05f6e5", "682b3060798c091d4f05f6e5"],
+        "workspaceType": "design",
+        "tags": ["tag1", "tag2"],
+        "defaultPermissions": {
+            "read": true,
+            "write": true
+        },
+        "metadata": {
+            "key1": "value1",
+            "key2": "value2"
+        },
+        "tools": ["tool1", "tool2"],
+        "features": ["feature1", "feature2"],
+        "type": "personal"
+    }
+  }
+}

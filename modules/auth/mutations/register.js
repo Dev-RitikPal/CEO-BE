@@ -1,5 +1,5 @@
 const { connectToDatabase } = require("../utils/mongooseConnection");
-const { Register } = require("../models/register");
+const { Organization } = require("../models/register");
 
 /**
  * Lambda function handler to create user.
@@ -23,7 +23,7 @@ module.exports.handler = async (event, context, callback) => {
     console.log("Database connection established");
     const { basicDetails, businessAddress } = event.arguments.input;
 
-    let org = await Register.find({
+    let org = await Organization.find({
       "basicDetails.companyName": basicDetails.companyName,
       "businessAddress.mailingAddress": businessAddress.mailingAddress,
     });
@@ -32,7 +32,7 @@ module.exports.handler = async (event, context, callback) => {
       throw new Error("Organization already exists");
     }
 
-    org = await Register.create(event.arguments.input);
+    org = await Organization.create(event.arguments.input);
 
     if (!org) {
       throw new Error("Organization not registered");

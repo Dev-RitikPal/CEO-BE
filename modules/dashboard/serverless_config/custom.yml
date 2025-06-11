@@ -1,5 +1,6 @@
 addProjectLambdaArn: arn:aws:lambda:${self:provider.region}:${aws:accountId}:function:${self:service}-${self:provider.stage}-addProject
 dashboardLambdaArn: arn:aws:lambda:${self:provider.region}:${aws:accountId}:function:${self:service}-${self:provider.stage}-dashboard
+addWorkspaceLambdaArn: arn:aws:lambda:${self:provider.region}:${aws:accountId}:function:${self:service}-${self:provider.stage}-addWorkspace
 # For Lamda versioning purposes
 # prune:
 #   automatic: true  # Automatically prune old versions after deployment
